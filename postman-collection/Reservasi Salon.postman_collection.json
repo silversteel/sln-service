@@ -6,6 +6,99 @@
 	},
 	"item": [
 		{
+			"name": "Auth / User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin2\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"employee1\",\r\n    \"password\": \"employee1\",\r\n    \"email\": \"employee1@celine.shop\",\r\n    \"role\": \"employee1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"admin5@gmail.com\",\r\n    \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Service",
 			"item": [
 				{
@@ -709,16 +802,19 @@
 			]
 		},
 		{
-			"name": "Auth / User",
+			"name": "Schedule",
 			"item": [
 				{
-					"name": "Login",
+					"name": "Available Schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin2\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"00:00:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -726,7 +822,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/login",
+							"raw": "http://localhost:3000/api/schedules/available",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -734,20 +830,24 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"login"
+								"schedules",
+								"available"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Register",
+					"name": "All Schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"employee1\",\r\n    \"password\": \"employee1\",\r\n    \"email\": \"employee1@celine.shop\",\r\n    \"role\": \"employee1\"\r\n}",
+							"raw": "{\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"00:00:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -755,7 +855,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/register",
+							"raw": "http://localhost:3000/api/schedules",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -763,28 +863,24 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"register"
+								"schedules"
 							]
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
 				{
-					"name": "Update User",
+					"name": "Order Report",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"admin5@gmail.com\",\r\n    \"role\": \"admin\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:3000/api/user/update",
+							"raw": "http://localhost:3000/api/report?type=weekly",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -792,8 +888,13 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"user",
-								"update"
+								"report"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "weekly"
+								}
 							]
 						}
 					},
