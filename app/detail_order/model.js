@@ -12,7 +12,7 @@ async function insert(order_id, service_id, service_name, price) {
 
 async function remove(order_id, service_id) {
     try {
-        const result = await db.query('delete from celine.order_detail where order_id = $1 and service_id $= 2', [order_id, service_id]);
+        const result = await db.query('delete from celine.order_detail where order_id = $1 and service_id = $2', [order_id, service_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -32,7 +32,7 @@ async function removeByOrderId(order_id) {
 
 async function findById(order_id, service_id) {
     try {
-        const result = await db.query('select * from celine.order_detail where order_id = $1 and service_id $= 2', [order_id, service_id]);
+        const result = await db.query('select * from celine.order_detail where order_id = $1 and service_id = $2', [order_id, service_id]);
         return result;
     } catch (err) {
         console.log(err.stack);

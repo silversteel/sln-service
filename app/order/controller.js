@@ -120,7 +120,7 @@ async function update(req, res) {
                 if (result.rowCount > 0) {
                     res.status(200);
                     res.json({
-                        message: "Order successfully created!"
+                        message: "Order successfully updated!"
                     });
                 }
             } else {

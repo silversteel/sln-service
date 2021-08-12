@@ -9,6 +9,7 @@ const serviceRouter = require('./app/service/router');
 const employeeRouter = require('./app/employee/router');
 const customerRouter = require('./app/customer/router');
 const orderRouter = require('./app/order/router');
+const orderDetailRouter = require('./app/detail_order/router');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/api', serviceRouter);
 app.use('/api', employeeRouter);
 app.use('/api', customerRouter);
 app.use('/api', orderRouter);
+app.use('/api', orderDetailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

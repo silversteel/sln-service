@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-const customerController = require('./controller');
+const orderDetailController = require('./controller');
 
-router.get('/orders/:id/details', customerController.readAll);
-router.post('/orders/details', customerController.create);
-router.delete('/orders/details', customerController.remove);
+router.get('/orders/:id/details', orderDetailController.readAll);
+router.post('/orders/details', orderDetailController.create);
+router.delete('/orders/details', orderDetailController.remove);
 
 
 module.exports = router;
