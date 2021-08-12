@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"S001\",\r\n    \"service_name\": \"Cukur Rambut\",\r\n    \"thumbnail\": \"pict\",\r\n    \"description\": \"Cukur rambut biasa\",\r\n    \"price\": 20000,\r\n    \"created_by\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"service_id\": \"S002\",\r\n    \"service_name\": \"Kramas\",\r\n    \"thumbnail\": \"pict\",\r\n    \"description\": \"Kramas biasa\",\r\n    \"price\": 20000,\r\n    \"created_by\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -430,12 +430,12 @@
 					"response": []
 				},
 				{
-					"name": "Read By Id",
+					"name": "Read By Customer Id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/orders",
+							"raw": "http://localhost:3000/api/customers/CUST001/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -443,7 +443,30 @@
 							"port": "3000",
 							"path": [
 								"api",
+								"customers",
+								"CUST001",
 								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/ORD01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"ORD01"
 							]
 						}
 					},
@@ -456,7 +479,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"created_by\": \"dev\"\r\n}",
+							"raw": "{\r\n    \"order_id\": \"ORD02\",\r\n    \"customer_id\": \"CUST001\",\r\n    \"employee_id\": \"EMP001\",\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"07:00:00\",\r\n    \"is_down_payment\": true,\r\n    \"customer_account_name\": \"Muhammad Faishal\",\r\n    \"customer_account_number\": \"3291910211\",\r\n    \"customer_payment_nominal\": \"10000\",\r\n    \"transfer_evidence\": \"gambar\",\r\n    \"detail_order\": [{\r\n        \"service_id\": \"S001\",\r\n        \"service_name\": \"Cukur Rambut\",\r\n        \"price\": \"20000\"\r\n    }],\r\n    \"created_by\": \"user1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -485,7 +508,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes123\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"updated_by\": \"dev\"\r\n}",
+							"raw": "{\r\n    \"order_id\": \"ORD02\",\r\n    \"customer_id\": \"CUST001\",\r\n    \"employee_id\": \"EMP001\",\r\n    \"schedule_id\": \"3\",\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"07:00:00\",\r\n    \"is_down_payment\": true,\r\n    \"customer_account_name\": \"Muhammad Faishal\",\r\n    \"customer_account_number\": \"3291910211\",\r\n    \"customer_payment_nominal\": \"10000\",\r\n    \"transfer_evidence\": \"gambar\",\r\n    \"status\": \"on-progress\",\r\n    \"detail_order\": [{\r\n        \"service_id\": \"S001\",\r\n        \"service_name\": \"Cukur Rambut\",\r\n        \"price\": \"20000\"\r\n    },{\r\n        \"service_id\": \"S002\",\r\n        \"service_name\": \"Kramas\",\r\n        \"price\": \"20000\"\r\n    }],\r\n    \"created_by\": \"user1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -514,7 +537,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"s102\"\r\n}",
+							"raw": "{\r\n    \"order_id\": \"s102\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -543,7 +566,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"created_by\": \"dev\"\r\n}",
+							"raw": "{\r\n    \"order_id\": \"ORD02\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -573,7 +596,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"created_by\": \"dev\"\r\n}",
+							"raw": "{\r\n    \"order_id\": \"ORD01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -591,6 +614,93 @@
 								"api",
 								"orders",
 								"complete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Detail",
+			"item": [
+				{
+					"name": "Order Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/ORD01/details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"ORD01",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD01\",\r\n    \"service_id\": \"S002\",\r\n    \"service_name\": \"Kramas\",\r\n    \"price\": \"20000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD01\",\r\n    \"service_id\": \"S002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"details"
 							]
 						}
 					},
