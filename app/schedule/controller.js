@@ -125,10 +125,30 @@ async function readAll(req, res) {
     }
 }
 
+async function readAllAvailableEmployee(req, res) {
+    try {
+        const { booking_date, booking_time } = req.body;
+        const response = await scheduleModel.findAllEmployeeAvailableSchedule(booking_date + ' ' + booking_time);
+        if (response.rowCount > 0) {
+            res.status(200);
+            res.json(response.rows);
+        } else {
+            res.status(200);
+            res.json([]);
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
 module.exports = {
     create,
     update,
     remove,
     read,
-    readAll
+    readAll,
+    readAllAvailableEmployee
 }

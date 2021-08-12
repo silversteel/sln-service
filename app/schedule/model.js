@@ -32,7 +32,17 @@ async function remove(schedule_id) {
 
 async function findAll() {
     try {
-        const result = await db.query('select * from celine.schedule');
+        const result = await db.query('select e.employee_id, e.fullname, e.phone_number, s.* from celine.schedule s join celine.employee e on e.employee_id = s.employee_id');
+        return result;
+    } catch (err) {
+        console.log(err.stack);
+        throw err;
+    }
+}
+
+async function findAllEmployeeAvailableSchedule(schedule) {
+    try {
+        const result = await db.query("select e.employee_id, e.fullname, e.phone_number, s.* from celine.schedule s join celine.employee e on e.employee_id = s.employee_id where s.status = 'complete' OR ($1::timestamp < s.schedule OR s.schedule + '3 hour'::interval >= $1::timestamp)", [schedule]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -42,7 +52,7 @@ async function findAll() {
 
 async function findById(schedule_id) {
     try {
-        const result = await db.query('select * from celine.schedule where schedule_id = $1', [schedule_id]);
+        const result = await db.query('select e.employee_id, e.fullname, e.phone_number, s.* from celine.schedule s join celine.employee e on e.employee_id = s.employee_id where s.schedule_id = $1', [schedule_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -77,5 +87,6 @@ module.exports = {
     findAll,
     findById,
     findByEmployeeId,
-    findByEmployeeIdWithScheduleId
+    findByEmployeeIdWithScheduleId,
+    findAllEmployeeAvailableSchedule
 }
