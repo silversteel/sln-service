@@ -1,10 +1,23 @@
 const orderModel = require('./model');
-const scheduleModel = requre('../schedule/model');
-const orderDetailModel = requre('../detail_order/model');
+const scheduleModel = require('../schedule/model');
+const orderDetailModel = require('../detail_order/model');
 
 async function checkEmployeeSchedule(employee_id, schedule) {
     try {
         const result = await scheduleModel.findByEmployeeId(employee_id, schedule);
+        if (result.rowCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch(error) {
+        throw error;
+    }
+}
+
+async function checkEmployeeScheduleWithScheduleId(employee_id, schedule, schedule_id) {
+    try {
+        const result = await scheduleModel.findByEmployeeIdWithScheduleId(employee_id, schedule, schedule_id);
         if (result.rowCount > 0) {
             return true;
         } else {
@@ -45,7 +58,7 @@ async function create(req, res) {
                 const addSchedule = await scheduleModel.insert(employee_id, booking_date + ' ' + booking_time, 'booked');
                 //Add detail order 
                 detail_order.forEach(item => {
-                    await orderDetailModel.insert(order_id, item.service_id, item.service_name, item.price);
+                    orderDetailModel.insert(order_id, item.service_id, item.service_name, item.price);
                 });
                 //Add order
                 const result = await orderModel.insert(order_id, employee_id, customer_id, addSchedule.rows[0].schedule_id, booking_date + ' ' + booking_time, is_down_payment, customer_account_name, customer_account_number, customer_payment_nominal, transfer_evidence, 'unconfirmed', created_by);
@@ -56,12 +69,10 @@ async function create(req, res) {
                     });
                 }
             } else {
-                if (result.rowCount > 0) {
-                    res.status(400);
-                    res.json({
-                        message: "Can't create order, because the employee have another schedule!"
-                    });
-                }
+                res.status(400);
+                res.json({
+                    message: "Can't create order, because the employee have another schedule!"
+                });
             }
         }
     } catch (error) {
@@ -92,7 +103,7 @@ async function update(req, res) {
         } = req.body;
         const checkOrder = await orderModel.findById(order_id);
         if (checkOrder.rowCount > 0) {
-            const isEmployeeHaveSchedule = await checkEmployeeSchedule(employee_id, booking_date + ' ' + booking_time);
+            const isEmployeeHaveSchedule = await checkEmployeeScheduleWithScheduleId(employee_id, booking_date + ' ' + booking_time, schedule_id);
             if (!isEmployeeHaveSchedule) {
                 //Remove schedule
                 const removeSchedule = await scheduleModel.remove(schedule_id);
@@ -102,7 +113,7 @@ async function update(req, res) {
                 const removeOrderDetailModel = await orderDetailModel.removeByOrderId(order_id);
                 //Add detail order 
                 detail_order.forEach(item => {
-                    await orderDetailModel.insert(order_id, item.service_id, item.service_name, item.price);
+                    orderDetailModel.insert(order_id, item.service_id, item.service_name, item.price);
                 });
                 //Update order
                 const result = await orderModel.update(order_id, employee_id, customer_id, addSchedule.rows[0].schedule_id, booking_date + ' ' + booking_time, is_down_payment, customer_account_name, customer_account_number, customer_payment_nominal, transfer_evidence, status, updated_by);
@@ -113,12 +124,10 @@ async function update(req, res) {
                     });
                 }
             } else {
-                if (result.rowCount > 0) {
-                    res.status(400);
-                    res.json({
-                        message: "Can't create order, because the employee have another schedule!"
-                    });
-                }
+                res.status(400);
+                res.json({
+                    message: "Can't create order, because the employee have another schedule!"
+                });
             }
         } else {
             res.status(404);

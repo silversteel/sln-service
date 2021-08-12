@@ -2,7 +2,7 @@ const db = require('../../database');
 
 async function insert(employee_id, schedule, status) {
     try {
-        const result = await db.query('insert into celine.schedule(employee_id, schedule, status) values($1, $2, $3)', [employee_id, schedule, status]);
+        const result = await db.query('insert into celine.schedule(employee_id, schedule, status) values($1, $2, $3) returning *', [employee_id, schedule, status]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -60,11 +60,22 @@ async function findByEmployeeId(employee_id, schedule) {
     }
 }
 
+async function findByEmployeeIdWithScheduleId(employee_id, schedule, schedule_id) {
+    try {
+        const result = await db.query("select * from celine.schedule where employee_id = $1 and schedule_id != $4 and (CASE WHEN status != 'complete' THEN (schedule >= $2::timestamp and schedule < $2::timestamp + '3 hour'::interval) or status = $3 ELSE false END)", [employee_id, schedule, 'on-progress', schedule_id]);
+        return result;
+    } catch (err) {
+        console.log(err.stack);
+        throw err;
+    }
+}
+
 module.exports = {
     insert,
     update,
     remove,
     findAll,
     findById,
-    findByEmployeeId
+    findByEmployeeId,
+    findByEmployeeIdWithScheduleId
 }

@@ -72,7 +72,7 @@ async function confirmOrder(order_id) {
 
 async function completeOrder(order_id) {
     try {
-        const result = await db.query("with update_order_status as (update celine.order set status = 'completed' where order_id = $1 returning *) update celine.schedule set status = 'complete' where schedule_id = (select id in update_order_status)", [order_id]);
+        const result = await db.query("with update_order_status as (update celine.order set status = 'completed' where order_id = $1 returning *) update celine.schedule set status = 'complete' where schedule_id = (select schedule_id from update_order_status)", [order_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
