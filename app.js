@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const { decodeToken } = require('./app/auth/middleware');
+
 const authRouter = require('./app/auth/router');
 const serviceRouter = require('./app/service/router');
 const employeeRouter = require('./app/employee/router');
@@ -24,6 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(decodeToken());
 
 //router here
 app.use('/api', authRouter);

@@ -6,6 +6,7 @@ CREATE TABLE celine.user (
     password character varying(255) NOT NULL,
 	email character varying(100),
     role character varying(10) NOT NULL,
+	token text,
     created timestamp with time zone DEFAULT now()
 );
 

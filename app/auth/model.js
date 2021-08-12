@@ -40,9 +40,31 @@ async function updateUser(username, password, email, role) {
     }
 }
 
+async function updateToken(username, token) {
+    try {
+        const result = await db.query('update celine.user set token = $2 where username = $1 returning username, email, role, token', [username, token]);
+        return result;
+    } catch (error) {
+        console.log(error.stack);
+        throw error;
+    }
+}
+
+async function checkToken(token) {
+    try {
+        const result = await db.query('select 1 from celine.user where token = $1', [token]);
+        return result;
+    } catch (error) {
+        console.log(error.stack);
+        throw error;
+    }
+}
+
 module.exports = {
     getUser,
     createUser,
     checkUser,
-    updateUser
+    updateUser,
+    updateToken,
+    checkToken
 }
