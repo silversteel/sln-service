@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin2\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"username\": \"admin5\",\r\n    \"password\": \"admin5\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -38,13 +38,52 @@
 					"response": []
 				},
 				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqb2laWGxLYUdKSFkybFBhVXBKVlhwSk1VNXBTWE5KYmxJMVkwTkpOa2xyY0ZoV1EwbzVMbVY1U2pGak1sWjVZbTFHZEZwVFNUWkpiVVpyWWxkc2RVNVRTWE5KYlZaMFdWZHNjMGxxYjJsWlYxSjBZVmMwTVZGSFRteGlSMngxV2xNMWVtRkhPWGRKYVhkcFkyMDVjMXBUU1RaSmJVWnJZbGRzZFVscGQybFpNMHBzV1ZoU2JGcERTVFpKYWtsM1RXcEZkRTFFWjNSTlZFcFZUVlJOTms1RVp6Wk5WR3QxVGxSVmVWZHBTWE5KYmxKMllUSldkVWxxYjJsYVdHeExZVWRLU0ZreWJGQmhWWEJLVmxod1NrMVZOWEJUV0U1S1lteEpNVmt3VGtwT2EyeHlZMFpvVjFFd2J6Vk1iVlkxVTJwR2FrMXNXalZaYlRGSFpFWndWRk5VV2twaVZWcHlXV3hrYzJSVk5WUlRXRTVLWWxaYU1GZFdaSE5qTUd4eFlqSnNXbFl4U2pCWlZtTXdUVlpHU0ZSdGVHbFNNbmd4VjJ4Tk1XVnRSa2hQV0dSS1lWaGtjRmt5TURWak1YQlVVMVJhU21KVlduSlpiR1J6WkZWc2NHUXliRnBOTUhCelYxWm9VMkpHY0VSVFZGcEtZV3RzTTFSWGNFWmtSVEZGV2pOU1RsWkZjRlpVVmxKT1RtczFSVnA2V2s1V1IzUXhWR3hTVm1WV1pIQlRXRTVLWW14S01sbFVTbGRrVld4eFlqSnNZVmRIZUV4WlZXUkxVMFpyZVdKR1FtaFdXRUpMVm14b2QxTnJNVlpPV0VKVVYwVTFTMWx0ZUVwTlZtdDNWR3R3VDJFeWVIbFpNRnB2VmpGRmQySjZWazFpVmxreFZUSndSMkZyTVhOWGFsWmFZbFJHU0ZwRlduZFdSazVWVjJ0d2FWWldjSGxYVjNocll6SlNWazVXVWxSWFJUVkxXV3hhWVUxR1pGZGFTRTVxVFVkNGVGbHFTbk5YYkZsNFUycENXbFp0VFhkVVZscEhVMFpTZEdWSGJGTk5ibWQ0VmpKNFRrMVhWblJTYTJoUVYwZFNTMWxXYUd0alJtdDVUVVJXYWsxWVFsVlZNVkpoVTIxS1ZsZHVTbHBpUjFKNldrWldjMk5IVVhsaVJuQk9UVWhDZWxZeFdtOVZNa3BIWTBWU1ZGWkdjRXRaVjNSelRURlNXR05GV210U1ZFWkdWMnBPVTFSc1drWmpSbHBWVm14S1QxUnRjekZTVm5BMlYyczFWMUl6VVhoV1IzaFRWbTFXVjFwSVFsUlhSVFZMV1cxNFMwMXNiRlZUYkdSclZsZDRlRmt3YUZkaE1WbDZZVWh3VlZKVk5VeFpNRnB6VjFaV1dHSkdRbWhoTVZZMVZrWmtkMkpyTUhkT1ZGcFlWa1Z3VUZwWE1UTk9WWGh5VjJ0V1YxWkZjSGRWVnpFd1YxZFNkVlZ1YUdwU2VrRjVWVEkxVm1ReGJIUmlSM1JWVWtkNFNsbFZXbmRpTWxKMVZtMHhUbUp0ZUdoVmFrNXZZMVpTY2xKdFdsUlNWbHBYVld0U1VtRlZlRVJUYmtKYVYwWkdjRlF5Y0VaTmF6RnhXbnBPVDJWc2EzcFVWVkpyVDFNMWNGWkZkRVZqUjJSd1pWUk9lR0V4U1RWVFZFNXlUbFUxYjJKclVYZGFiV3hoVjJzeFMxSXpaRVpTYlU1SVVXeE9VR0ZGZUcxaU1IUnFTV2wzYVdGWFJqQkphbTk0VG1wSk5FNTZZekpPZWxGM1psRXVObUpHY1ZNM1JGVjBiRkJGY0ZCVU1raG5Ta1p1WlhGS2VrVm5hbE5wTVZaWVJVSlBVSEExTUhoclJTSXNJbWxoZENJNk1UWXlPRGMzTmprME1IMC5TWS1OWjRuUGRyZE1pQXo5eDRReGI2a3FqMkdxZlkyV0Z1UVRab1VicTNZIiwiaWF0IjoxNjI4Nzc2OTU2fQ.OKzCc-uly0Q6G1JzjRaqGA0nUMroV0-Lox5U8KTeHr4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Register",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"employee1\",\r\n    \"password\": \"employee1\",\r\n    \"email\": \"employee1@celine.shop\",\r\n    \"role\": \"employee1\"\r\n}",
+							"raw": "{\r\n    \"username\": \"admin5\",\r\n    \"password\": \"admin5\",\r\n    \"email\": \"admin5@celine.shop\",\r\n    \"role\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -61,6 +100,45 @@
 							"path": [
 								"api",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqb2laWGxLYUdKSFkybFBhVXBKVlhwSk1VNXBTWE5KYmxJMVkwTkpOa2xyY0ZoV1EwbzVMbVY1U2pGak1sWjVZbTFHZEZwVFNUWkpiVVpyWWxkc2RVNVRTWE5KYlZaMFdWZHNjMGxxYjJsWlYxSjBZVmMwTVZGSFRteGlSMngxV2xNMWVtRkhPWGRKYVhkcFkyMDVjMXBUU1RaSmJVWnJZbGRzZFVscGQybFpNMHBzV1ZoU2JGcERTVFpKYWtsM1RXcEZkRTFFWjNSTlZFcFZUVlJOTms1RVp6Wk5WR3QxVGxSVmVWZHBTWE5KYmxKMllUSldkVWxxYjJsYVdHeExZVWRLU0ZreWJGQmhWWEJLVmxod1NrMVZOWEJUV0U1S1lteEpNVmt3VGtwT2EyeHlZMFpvVjFFd2J6Vk1iVlkxVTJwR2FrMXNXalZaYlRGSFpFWndWRk5VV2twaVZWcHlXV3hrYzJSVk5WUlRXRTVLWWxaYU1GZFdaSE5qTUd4eFlqSnNXbFl4U2pCWlZtTXdUVlpHU0ZSdGVHbFNNbmd4VjJ4Tk1XVnRSa2hQV0dSS1lWaGtjRmt5TURWak1YQlVVMVJhU21KVlduSlpiR1J6WkZWc2NHUXliRnBOTUhCelYxWm9VMkpHY0VSVFZGcEtZV3RzTTFSWGNFWmtSVEZGV2pOU1RsWkZjRlpVVmxKT1RtczFSVnA2V2s1V1IzUXhWR3hTVm1WV1pIQlRXRTVLWW14S01sbFVTbGRrVld4eFlqSnNZVmRIZUV4WlZXUkxVMFpyZVdKR1FtaFdXRUpMVm14b2QxTnJNVlpPV0VKVVYwVTFTMWx0ZUVwTlZtdDNWR3R3VDJFeWVIbFpNRnB2VmpGRmQySjZWazFpVmxreFZUSndSMkZyTVhOWGFsWmFZbFJHU0ZwRlduZFdSazVWVjJ0d2FWWldjSGxYVjNocll6SlNWazVXVWxSWFJUVkxXV3hhWVUxR1pGZGFTRTVxVFVkNGVGbHFTbk5YYkZsNFUycENXbFp0VFhkVVZscEhVMFpTZEdWSGJGTk5ibWQ0VmpKNFRrMVhWblJTYTJoUVYwZFNTMWxXYUd0alJtdDVUVVJXYWsxWVFsVlZNVkpoVTIxS1ZsZHVTbHBpUjFKNldrWldjMk5IVVhsaVJuQk9UVWhDZWxZeFdtOVZNa3BIWTBWU1ZGWkdjRXRaVjNSelRURlNXR05GV210U1ZFWkdWMnBPVTFSc1drWmpSbHBWVm14S1QxUnRjekZTVm5BMlYyczFWMUl6VVhoV1IzaFRWbTFXVjFwSVFsUlhSVFZMV1cxNFMwMXNiRlZUYkdSclZsZDRlRmt3YUZkaE1WbDZZVWh3VlZKVk5VeFpNRnB6VjFaV1dHSkdRbWhoTVZZMVZrWmtkMkpyTUhkT1ZGcFlWa1Z3VUZwWE1UTk9WWGh5VjJ0V1YxWkZjSGRWVnpFd1YxZFNkVlZ1YUdwU2VrRjVWVEkxVm1ReGJIUmlSM1JWVWtkNFNsbFZXbmRpTWxKMVZtMHhUbUp0ZUdoVmFrNXZZMVpTY2xKdFdsUlNWbHBYVld0U1VtRlZlRVJUYmtKYVYwWkdjRlF5Y0VaTmF6RnhXbnBPVDJWc2EzcFVWVkpyVDFNMWNGWkZkRVZqUjJSd1pWUk9lR0V4U1RWVFZFNXlUbFUxYjJKclVYZGFiV3hoVjJzeFMxSXpaRVpTYlU1SVVXeE9VR0ZGZUcxaU1IUnFTV2wzYVdGWFJqQkphbTk0VG1wSk5FNTZZekpPZWxGM1psRXVObUpHY1ZNM1JGVjBiRkJGY0ZCVU1raG5Ta1p1WlhGS2VrVm5hbE5wTVZaWVJVSlBVSEExTUhoclJTSXNJbWxoZENJNk1UWXlPRGMzTmprME1IMC5TWS1OWjRuUGRyZE1pQXo5eDRReGI2a3FqMkdxZlkyV0Z1UVRab1VicTNZIiwiaWF0IjoxNjI4Nzc2OTU2fQ.OKzCc-uly0Q6G1JzjRaqGA0nUMroV0-Lox5U8KTeHr4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"me"
 							]
 						}
 					},
@@ -104,6 +182,16 @@
 				{
 					"name": "Read All",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqcHVkV3hzTENKcFlYUWlPakUyTWpnM056YzBOek45LmJ3U21DYnNxUzFPYWlYaW9SX1BSd3JSQ1N3akw1RlJndGFDY29salZPckUiLCJpYXQiOjE2Mjg3Nzc0Nzd9.1YU8_AON6-gzMjDKdCH_LWkfnZuRSqaQJ1ARV1IOHcU",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
