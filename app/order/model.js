@@ -32,7 +32,7 @@ async function remove(order_id) {
 
 async function findAll() {
     try {
-        const result = await db.query('select * from celine.order');
+        const result = await db.query('select o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o');
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -42,7 +42,7 @@ async function findAll() {
 
 async function findAllByCustomerId(customer_id) {
     try {
-        const result = await db.query('select * from celine.order where customer_id = $1', [customer_id]);
+        const result = await db.query('select o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o where o.customer_id = $1', [customer_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -52,7 +52,7 @@ async function findAllByCustomerId(customer_id) {
 
 async function findById(order_id) {
     try {
-        const result = await db.query('select * from celine.order where order_id = $1', [order_id]);
+        const result = await db.query('select o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o where o.order_id = $1', [order_id]);
         return result;
     } catch (err) {
         console.log(err.stack);

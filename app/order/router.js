@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const orderController = require('./controller');
 
+router.get('/customers/:id/orders', orderController.readAllByCustomerId);
 router.get('/orders', orderController.readAll);
 router.get('/orders/:id', orderController.read);
 router.post('/orders', orderController.create);
