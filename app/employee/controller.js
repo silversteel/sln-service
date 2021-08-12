@@ -1,0 +1,126 @@
+const employeeModel = require('./model');
+
+async function create(req, res) {
+    try {
+        const { employee_id, username, fullname, phone_number, address, created_by } = req.body;
+        const checkEmployee = await employeeModel.findById(employee_id);
+        if (checkEmployee.rowCount > 0) {
+            res.status(400);
+            res.json({
+                message: 'Employee id already exists!',
+            });
+        } else {
+            const result = await employeeModel.insert(employee_id, username, fullname, phone_number, address, created_by);
+            if (result.rowCount > 0) {
+                res.status(200);
+                res.json({
+                    message: "Employee successfully created!"
+                });
+            }
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
+async function update(req, res) {
+    try {
+        const { employee_id, username, fullname, phone_number, address, updated_by } = req.body;
+        const checkEmployee = await employeeModel.findById(employee_id);
+        if (checkEmployee.rowCount > 0) {
+            const result = await employeeModel.update(employee_id, username, fullname, phone_number, address, updated_by);
+            if (result.rowCount > 0) {
+                res.status(200);
+                res.json({
+                    message: "Employee successfully updated!"
+                });
+            }
+        } else {
+            res.status(404);
+            res.json({
+                message: "Employee not found!"
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
+async function remove(req, res) {
+    try {
+        const { employee_id } = req.body;
+        const checkEmployee = await employeeModel.findById(employee_id);
+        if (checkEmployee.rowCount > 0) {
+            const result = await employeeModel.remove(employee_id);
+            if (result.rowCount > 0) {
+                res.status(200);
+                res.json({
+                    message: "Employee successfully deleted!"
+                });
+            }
+        } else {
+            res.status(404);
+            res.json({
+                message: "Employee not found!"
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
+async function read(req, res) {
+    try {
+        const { id } = req.params;
+        const response = await employeeModel.findById(id);
+        if (response.rowCount > 0) {
+            res.status(200);
+            res.json(response.rows[0]);
+        } else {
+            res.status(404);
+            res.json({
+                message: 'Employee not found!'
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
+async function readAll(req, res) {
+    try {
+        const response = await employeeModel.findAll();
+        if (response.rowCount > 0) {
+            res.status(200);
+            res.json(response.rows);
+        } else {
+            res.status(200);
+            res.json([]);
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
+module.exports = {
+    create,
+    update,
+    remove,
+    read,
+    readAll
+}
