@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
-        let { service_id, service_name, thumbnail, description, price, created_by } = req.body;
+        let { service_id, service_name, thumbnail, description, price, is_show, created_by } = req.body;
         if (!service_id) {
             service_id = nanoid(10);
         }
@@ -14,7 +14,7 @@ async function create(req, res) {
                 message: 'Service name already exists!',
             });
         } else {
-            const result = await serviceModel.insert(service_id, service_name, thumbnail, description, price, created_by);
+            const result = await serviceModel.insert(service_id, service_name, thumbnail, description, price, is_show, created_by);
             if (result.rowCount > 0) {
                 res.status(200);
                 res.json({
@@ -32,10 +32,10 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const { service_id, service_name, thumbnail, description, price, updated_by } = req.body;
+        const { service_id, service_name, thumbnail, description, price, is_show, updated_by } = req.body;
         const checkService = await serviceModel.findById(service_id);
         if (checkService.rowCount > 0) {
-            const result = await serviceModel.update(service_id, service_name, thumbnail, description, price, updated_by);
+            const result = await serviceModel.update(service_id, service_name, thumbnail, description, price, is_show, updated_by);
             if (result.rowCount > 0) {
                 res.status(200);
                 res.json({
@@ -82,6 +82,32 @@ async function remove(req, res) {
     }
 }
 
+async function hideService(req, res) {
+    try {
+        const { service_id, updated_by } = req.body;
+        const checkService = await serviceModel.findById(service_id);
+        if (checkService.rowCount > 0) {
+            const result = await serviceModel.hideService(service_id, updated_by);
+            if (result.rowCount > 0) {
+                res.status(200);
+                res.json({
+                    message: "Service successfully hide!"
+                });
+            }
+        } else {
+            res.status(404);
+            res.json({
+                message: "Service not found!"
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
 async function read(req, res) {
     try {
         const { id } = req.params;
@@ -105,7 +131,12 @@ async function read(req, res) {
 
 async function readAll(req, res) {
     try {
-        const response = await serviceModel.findAll();
+        const { show_status } = req.params;
+        let is_show = null;
+        if (show_status === 'show_only') {
+            show_status = true;
+        }
+        const response = await serviceModel.findAll(is_show);
         if (response.rowCount > 0) {
             res.status(200);
             res.json(response.rows);
@@ -126,6 +157,7 @@ module.exports = {
     update,
     remove,
     read,
-    readAll
+    readAll,
+    hideService
 }
   

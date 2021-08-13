@@ -7,5 +7,6 @@ router.get('/services/:id', serviceController.read);
 router.post('/services', serviceController.create);
 router.put('/services', serviceController.update);
 router.delete('/services', serviceController.remove);
+router.post('/services/hide', serviceController.hideService);
 
 module.exports = router;
