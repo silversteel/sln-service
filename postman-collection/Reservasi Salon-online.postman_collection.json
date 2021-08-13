@@ -192,7 +192,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqcHVkV3hzTENKcFlYUWlPakUyTWpnM056YzBOek45LmJ3U21DYnNxUzFPYWlYaW9SX1BSd3JSQ1N3akw1RlJndGFDY29salZPckUiLCJpYXQiOjE2Mjg3Nzc0Nzd9.1YU8_AON6-gzMjDKdCH_LWkfnZuRSqaQJ1ARV1IOHcU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBjZWxpbmUuc2hvcCIsInJvbGUiOiJhZG1pbiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdUlpd2laVzFoYVd3aU9pSmhaRzFwYmtCalpXeHBibVV1YzJodmNDSXNJbkp2YkdVaU9pSmhaRzFwYmlJc0luUnZhMlZ1SWpvaVpYbEthR0pIWTJsUGFVcEpWWHBKTVU1cFNYTkpibEkxWTBOSk5rbHJjRmhXUTBvNUxtVjVTakZqTWxaNVltMUdkRnBUU1RaSmJVWnJZbGRzZFVscGQybGFWekZvWVZkM2FVOXBTbWhhUnpGd1ltdENhbHBYZUhCaWJWVjFZekpvZG1ORFNYTkpia3AyWWtkVmFVOXBTbWhhUnpGd1ltbEpjMGx1VW5aaE1sWjFTV3B3ZFdSWGVITk1RMHBxWTIxV2FHUkhWbXRKYW05cFRXcEJlVTFUTUhkUFF6QjRUVEZSZUUxRWJ6Qk9hbTkzVG1rME1rNVVXbUZKYVhkcFlWZEdNRWxxYjNoT2FrazBUMFJaZDAxcVNUSm1VUzUwZDFZMU9VbHlURE5hVjNaNmMzcHVkSEpaYkRoVmVFOVVaekpvZGtZM1lVMVhlVWhQWTFaMWJHYzBJaXdpWTNKbFlYUmxaQ0k2SWpJd01qRXRNRGd0TVROVU1UQTZORFk2TURZdU5qVTJXaUlzSW1saGRDSTZNVFl5T0RnMk1qZzBObjAuWncySDZ6NzBPZDB3WnJxMmZPTUQ5dTgtZnIxUXQyd1lmZE0yWGUtWGVpcyIsImNyZWF0ZWQiOiIyMDIxLTA4LTEzVDEwOjQ2OjA2LjY1NloiLCJpYXQiOjE2Mjg4NjU4MDV9.zvenhaCrYH4S5W_eZXRQ9cM8lMiQvQg0frNkiWs5XKA",
 									"type": "string"
 								}
 							]
@@ -200,7 +200,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services",
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services?show_status=show_only",
 							"protocol": "https",
 							"host": [
 								"enigmatic-atoll-46738",
@@ -210,6 +210,12 @@
 							"path": [
 								"api",
 								"services"
+							],
+							"query": [
+								{
+									"key": "show_status",
+									"value": "show_only"
+								}
 							]
 						}
 					},
@@ -218,10 +224,20 @@
 				{
 					"name": "Read By Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBjZWxpbmUuc2hvcCIsInJvbGUiOiJhZG1pbiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdUlpd2laVzFoYVd3aU9pSmhaRzFwYmtCalpXeHBibVV1YzJodmNDSXNJbkp2YkdVaU9pSmhaRzFwYmlJc0luUnZhMlZ1SWpwdWRXeHNMQ0pqY21WaGRHVmtJam9pTWpBeU1TMHdPQzB4TTFReE1EbzBOam93Tmk0Mk5UWmFJaXdpYVdGMElqb3hOakk0T0RZd01qSTJmUS50d1Y1OUlyTDNaV3Z6c3pudHJZbDhVeE9UZzJodkY3YU1XeUhPY1Z1bGc0IiwiY3JlYXRlZCI6IjIwMjEtMDgtMTNUMTA6NDY6MDYuNjU2WiIsImlhdCI6MTYyODg2Mjg0Nn0.Zw2H6z70Od0wZrq2fOMD9u8-fr1Qt2wYfdM2Xe-Xeis",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services/s102",
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services/JzKPFOl_Rs",
 							"protocol": "https",
 							"host": [
 								"enigmatic-atoll-46738",
@@ -231,7 +247,7 @@
 							"path": [
 								"api",
 								"services",
-								"s102"
+								"JzKPFOl_Rs"
 							]
 						}
 					},
@@ -240,11 +256,21 @@
 				{
 					"name": "Create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBjZWxpbmUuc2hvcCIsInJvbGUiOiJhZG1pbiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdUlpd2laVzFoYVd3aU9pSmhaRzFwYmtCalpXeHBibVV1YzJodmNDSXNJbkp2YkdVaU9pSmhaRzFwYmlJc0luUnZhMlZ1SWpwdWRXeHNMQ0pqY21WaGRHVmtJam9pTWpBeU1TMHdPQzB4TTFReE1EbzBOam93Tmk0Mk5UWmFJaXdpYVdGMElqb3hOakk0T0RZd01qSTJmUS50d1Y1OUlyTDNaV3Z6c3pudHJZbDhVeE9UZzJodkY3YU1XeUhPY1Z1bGc0IiwiY3JlYXRlZCI6IjIwMjEtMDgtMTNUMTA6NDY6MDYuNjU2WiIsImlhdCI6MTYyODg2Mjg0Nn0.Zw2H6z70Od0wZrq2fOMD9u8-fr1Qt2wYfdM2Xe-Xeis",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"S002\",\r\n    \"service_name\": \"Kramas\",\r\n    \"thumbnail\": \"pict\",\r\n    \"description\": \"Kramas biasa\",\r\n    \"price\": 20000,\r\n    \"created_by\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"service_name\": \"Cukur Rambut\",\r\n    \"thumbnail\": \"-\",\r\n    \"description\": \"Cukur Rambut Model A\",\r\n    \"price\": 20000,\r\n    \"is_show\": true,\r\n    \"created_by\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -269,13 +295,54 @@
 					"response": []
 				},
 				{
+					"name": "Hide Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBjZWxpbmUuc2hvcCIsInJvbGUiOiJhZG1pbiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdUlpd2laVzFoYVd3aU9pSmhaRzFwYmtCalpXeHBibVV1YzJodmNDSXNJbkp2YkdVaU9pSmhaRzFwYmlJc0luUnZhMlZ1SWpwdWRXeHNMQ0pqY21WaGRHVmtJam9pTWpBeU1TMHdPQzB4TTFReE1EbzBOam93Tmk0Mk5UWmFJaXdpYVdGMElqb3hOakk0T0RZd01qSTJmUS50d1Y1OUlyTDNaV3Z6c3pudHJZbDhVeE9UZzJodkY3YU1XeUhPY1Z1bGc0IiwiY3JlYXRlZCI6IjIwMjEtMDgtMTNUMTA6NDY6MDYuNjU2WiIsImlhdCI6MTYyODg2Mjg0Nn0.Zw2H6z70Od0wZrq2fOMD9u8-fr1Qt2wYfdM2Xe-Xeis",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"JzKPFOl_Rs\",\r\n    \"updated_by\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services/hide",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"services",
+								"hide"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes123\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"updated_by\": \"dev\"\r\n}",
+							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes123\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"is_show\": true,\r\n    \"updated_by\": \"dev\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
