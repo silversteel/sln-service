@@ -10,7 +10,10 @@ const { dbHost, dbName, dbPort, dbUser, dbPass, dbUrl } = require('../app/config
 // });
 
 const pool = new Pool({
-    connectionString: dbUrl
+    connectionString: dbUrl,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 const db = pool;
