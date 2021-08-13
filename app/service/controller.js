@@ -136,6 +136,7 @@ async function readAll(req, res) {
         if (show_status === 'show_only') {
             is_show = true;
         }
+        console.log(req.params);
         const response = await serviceModel.findAll(is_show);
         if (response.rowCount > 0) {
             res.status(200);
