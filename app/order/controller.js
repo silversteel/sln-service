@@ -31,7 +31,7 @@ async function checkEmployeeScheduleWithScheduleId(employee_id, schedule, schedu
 
 async function create(req, res) {
     try {
-        const { 
+        let { 
             order_id, 
             customer_id, 
             employee_id, 

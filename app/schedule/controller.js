@@ -2,7 +2,7 @@ const scheduleModel = require('./model');
 
 async function create(req, res) {
     try {
-        const { employee_id, schedule, status } = req.body;
+        let { employee_id, schedule, status } = req.body;
         const checkEmployeeSchedule = await scheduleModel.findByEmployeeId(employee_id, schedule);
         if (checkEmployeeSchedule.rowCount < 1) {
             const result = await scheduleModel.insert( employee_id, schedule, status );

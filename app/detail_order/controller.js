@@ -2,7 +2,7 @@ const detailOrderModel = require('./model');
 
 async function create(req, res) {
     try {
-        const { order_id, service_id, service_name, price } = req.body;
+        let { order_id, service_id, service_name, price } = req.body;
         const checkDetailOrder = await detailOrderModel.findById(order_id, service_id);
         if (checkDetailOrder.rowCount > 0) {
             res.status(400);

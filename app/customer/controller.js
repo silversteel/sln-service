@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
-        const { customer_id, username, fullname, phone_number, email, id_number, gender, address, created_by } = req.body;
+        let { customer_id, username, fullname, phone_number, email, id_number, gender, address, created_by } = req.body;
         if (!customer_id) {
             customer_id = nanoid(10);
         }
