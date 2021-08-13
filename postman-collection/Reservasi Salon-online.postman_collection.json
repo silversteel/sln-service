@@ -1,0 +1,1028 @@
+{
+	"info": {
+		"_postman_id": "9fa6acce-b462-4d19-81a6-e1571b640c35",
+		"name": "Reservasi Salon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth / User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/login",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqb2laWGxLYUdKSFkybFBhVXBKVlhwSk1VNXBTWE5KYmxJMVkwTkpOa2xyY0ZoV1EwbzVMbVY1U2pGak1sWjVZbTFHZEZwVFNUWkpiVVpyWWxkc2RVNVRTWE5KYlZaMFdWZHNjMGxxYjJsWlYxSjBZVmMwTVZGSFRteGlSMngxV2xNMWVtRkhPWGRKYVhkcFkyMDVjMXBUU1RaSmJVWnJZbGRzZFVscGQybFpNMHBzV1ZoU2JGcERTVFpKYWtsM1RXcEZkRTFFWjNSTlZFcFZUVlJOTms1RVp6Wk5WR3QxVGxSVmVWZHBTWE5KYmxKMllUSldkVWxxYjJsYVdHeExZVWRLU0ZreWJGQmhWWEJLVmxod1NrMVZOWEJUV0U1S1lteEpNVmt3VGtwT2EyeHlZMFpvVjFFd2J6Vk1iVlkxVTJwR2FrMXNXalZaYlRGSFpFWndWRk5VV2twaVZWcHlXV3hrYzJSVk5WUlRXRTVLWWxaYU1GZFdaSE5qTUd4eFlqSnNXbFl4U2pCWlZtTXdUVlpHU0ZSdGVHbFNNbmd4VjJ4Tk1XVnRSa2hQV0dSS1lWaGtjRmt5TURWak1YQlVVMVJhU21KVlduSlpiR1J6WkZWc2NHUXliRnBOTUhCelYxWm9VMkpHY0VSVFZGcEtZV3RzTTFSWGNFWmtSVEZGV2pOU1RsWkZjRlpVVmxKT1RtczFSVnA2V2s1V1IzUXhWR3hTVm1WV1pIQlRXRTVLWW14S01sbFVTbGRrVld4eFlqSnNZVmRIZUV4WlZXUkxVMFpyZVdKR1FtaFdXRUpMVm14b2QxTnJNVlpPV0VKVVYwVTFTMWx0ZUVwTlZtdDNWR3R3VDJFeWVIbFpNRnB2VmpGRmQySjZWazFpVmxreFZUSndSMkZyTVhOWGFsWmFZbFJHU0ZwRlduZFdSazVWVjJ0d2FWWldjSGxYVjNocll6SlNWazVXVWxSWFJUVkxXV3hhWVUxR1pGZGFTRTVxVFVkNGVGbHFTbk5YYkZsNFUycENXbFp0VFhkVVZscEhVMFpTZEdWSGJGTk5ibWQ0VmpKNFRrMVhWblJTYTJoUVYwZFNTMWxXYUd0alJtdDVUVVJXYWsxWVFsVlZNVkpoVTIxS1ZsZHVTbHBpUjFKNldrWldjMk5IVVhsaVJuQk9UVWhDZWxZeFdtOVZNa3BIWTBWU1ZGWkdjRXRaVjNSelRURlNXR05GV210U1ZFWkdWMnBPVTFSc1drWmpSbHBWVm14S1QxUnRjekZTVm5BMlYyczFWMUl6VVhoV1IzaFRWbTFXVjFwSVFsUlhSVFZMV1cxNFMwMXNiRlZUYkdSclZsZDRlRmt3YUZkaE1WbDZZVWh3VlZKVk5VeFpNRnB6VjFaV1dHSkdRbWhoTVZZMVZrWmtkMkpyTUhkT1ZGcFlWa1Z3VUZwWE1UTk9WWGh5VjJ0V1YxWkZjSGRWVnpFd1YxZFNkVlZ1YUdwU2VrRjVWVEkxVm1ReGJIUmlSM1JWVWtkNFNsbFZXbmRpTWxKMVZtMHhUbUp0ZUdoVmFrNXZZMVpTY2xKdFdsUlNWbHBYVld0U1VtRlZlRVJUYmtKYVYwWkdjRlF5Y0VaTmF6RnhXbnBPVDJWc2EzcFVWVkpyVDFNMWNGWkZkRVZqUjJSd1pWUk9lR0V4U1RWVFZFNXlUbFUxYjJKclVYZGFiV3hoVjJzeFMxSXpaRVpTYlU1SVVXeE9VR0ZGZUcxaU1IUnFTV2wzYVdGWFJqQkphbTk0VG1wSk5FNTZZekpPZWxGM1psRXVObUpHY1ZNM1JGVjBiRkJGY0ZCVU1raG5Ta1p1WlhGS2VrVm5hbE5wTVZaWVJVSlBVSEExTUhoclJTSXNJbWxoZENJNk1UWXlPRGMzTmprME1IMC5TWS1OWjRuUGRyZE1pQXo5eDRReGI2a3FqMkdxZlkyV0Z1UVRab1VicTNZIiwiaWF0IjoxNjI4Nzc2OTU2fQ.OKzCc-uly0Q6G1JzjRaqGA0nUMroV0-Lox5U8KTeHr4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/logout",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"email\": \"admin@celine.shop\",\r\n    \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/register",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqb2laWGxLYUdKSFkybFBhVXBKVlhwSk1VNXBTWE5KYmxJMVkwTkpOa2xyY0ZoV1EwbzVMbVY1U2pGak1sWjVZbTFHZEZwVFNUWkpiVVpyWWxkc2RVNVRTWE5KYlZaMFdWZHNjMGxxYjJsWlYxSjBZVmMwTVZGSFRteGlSMngxV2xNMWVtRkhPWGRKYVhkcFkyMDVjMXBUU1RaSmJVWnJZbGRzZFVscGQybFpNMHBzV1ZoU2JGcERTVFpKYWtsM1RXcEZkRTFFWjNSTlZFcFZUVlJOTms1RVp6Wk5WR3QxVGxSVmVWZHBTWE5KYmxKMllUSldkVWxxYjJsYVdHeExZVWRLU0ZreWJGQmhWWEJLVmxod1NrMVZOWEJUV0U1S1lteEpNVmt3VGtwT2EyeHlZMFpvVjFFd2J6Vk1iVlkxVTJwR2FrMXNXalZaYlRGSFpFWndWRk5VV2twaVZWcHlXV3hrYzJSVk5WUlRXRTVLWWxaYU1GZFdaSE5qTUd4eFlqSnNXbFl4U2pCWlZtTXdUVlpHU0ZSdGVHbFNNbmd4VjJ4Tk1XVnRSa2hQV0dSS1lWaGtjRmt5TURWak1YQlVVMVJhU21KVlduSlpiR1J6WkZWc2NHUXliRnBOTUhCelYxWm9VMkpHY0VSVFZGcEtZV3RzTTFSWGNFWmtSVEZGV2pOU1RsWkZjRlpVVmxKT1RtczFSVnA2V2s1V1IzUXhWR3hTVm1WV1pIQlRXRTVLWW14S01sbFVTbGRrVld4eFlqSnNZVmRIZUV4WlZXUkxVMFpyZVdKR1FtaFdXRUpMVm14b2QxTnJNVlpPV0VKVVYwVTFTMWx0ZUVwTlZtdDNWR3R3VDJFeWVIbFpNRnB2VmpGRmQySjZWazFpVmxreFZUSndSMkZyTVhOWGFsWmFZbFJHU0ZwRlduZFdSazVWVjJ0d2FWWldjSGxYVjNocll6SlNWazVXVWxSWFJUVkxXV3hhWVUxR1pGZGFTRTVxVFVkNGVGbHFTbk5YYkZsNFUycENXbFp0VFhkVVZscEhVMFpTZEdWSGJGTk5ibWQ0VmpKNFRrMVhWblJTYTJoUVYwZFNTMWxXYUd0alJtdDVUVVJXYWsxWVFsVlZNVkpoVTIxS1ZsZHVTbHBpUjFKNldrWldjMk5IVVhsaVJuQk9UVWhDZWxZeFdtOVZNa3BIWTBWU1ZGWkdjRXRaVjNSelRURlNXR05GV210U1ZFWkdWMnBPVTFSc1drWmpSbHBWVm14S1QxUnRjekZTVm5BMlYyczFWMUl6VVhoV1IzaFRWbTFXVjFwSVFsUlhSVFZMV1cxNFMwMXNiRlZUYkdSclZsZDRlRmt3YUZkaE1WbDZZVWh3VlZKVk5VeFpNRnB6VjFaV1dHSkdRbWhoTVZZMVZrWmtkMkpyTUhkT1ZGcFlWa1Z3VUZwWE1UTk9WWGh5VjJ0V1YxWkZjSGRWVnpFd1YxZFNkVlZ1YUdwU2VrRjVWVEkxVm1ReGJIUmlSM1JWVWtkNFNsbFZXbmRpTWxKMVZtMHhUbUp0ZUdoVmFrNXZZMVpTY2xKdFdsUlNWbHBYVld0U1VtRlZlRVJUYmtKYVYwWkdjRlF5Y0VaTmF6RnhXbnBPVDJWc2EzcFVWVkpyVDFNMWNGWkZkRVZqUjJSd1pWUk9lR0V4U1RWVFZFNXlUbFUxYjJKclVYZGFiV3hoVjJzeFMxSXpaRVpTYlU1SVVXeE9VR0ZGZUcxaU1IUnFTV2wzYVdGWFJqQkphbTk0VG1wSk5FNTZZekpPZWxGM1psRXVObUpHY1ZNM1JGVjBiRkJGY0ZCVU1raG5Ta1p1WlhGS2VrVm5hbE5wTVZaWVJVSlBVSEExTUhoclJTSXNJbWxoZENJNk1UWXlPRGMzTmprME1IMC5TWS1OWjRuUGRyZE1pQXo5eDRReGI2a3FqMkdxZlkyV0Z1UVRab1VicTNZIiwiaWF0IjoxNjI4Nzc2OTU2fQ.OKzCc-uly0Q6G1JzjRaqGA0nUMroV0-Lox5U8KTeHr4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/me",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"admin5@gmail.com\",\r\n    \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/user/update",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "Read All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluNSIsImVtYWlsIjoiYWRtaW41QGNlbGluZS5zaG9wIiwicm9sZSI6ImFkbWluIiwiY3JlYXRlZCI6IjIwMjEtMDgtMTJUMTM6NDg6MTkuNTUyWiIsInRva2VuIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZrYldsdU5TSXNJbVZ0WVdsc0lqb2lZV1J0YVc0MVFHTmxiR2x1WlM1emFHOXdJaXdpY205c1pTSTZJbUZrYldsdUlpd2lZM0psWVhSbFpDSTZJakl3TWpFdE1EZ3RNVEpVTVRNNk5EZzZNVGt1TlRVeVdpSXNJblJ2YTJWdUlqcHVkV3hzTENKcFlYUWlPakUyTWpnM056YzBOek45LmJ3U21DYnNxUzFPYWlYaW9SX1BSd3JSQ1N3akw1RlJndGFDY29salZPckUiLCJpYXQiOjE2Mjg3Nzc0Nzd9.1YU8_AON6-gzMjDKdCH_LWkfnZuRSqaQJ1ARV1IOHcU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services/s102",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"services",
+								"s102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"S002\",\r\n    \"service_name\": \"Kramas\",\r\n    \"thumbnail\": \"pict\",\r\n    \"description\": \"Kramas biasa\",\r\n    \"price\": 20000,\r\n    \"created_by\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services/",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"services",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"s103\",\r\n    \"service_name\": \"tes123\",\r\n    \"thumbnail\": \"asd\",\r\n    \"description\": \"asd\",\r\n    \"price\": 10000,\r\n    \"updated_by\": \"dev\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"s102\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/services/",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"services",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Read All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/customers",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/customers/CUST001",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customers",
+								"CUST001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"CUST001\", \r\n    \"username\": \"user1\", \r\n    \"fullname\": \"Muhammad Faishal\", \r\n    \"phone_number\": \"087122123123\", \r\n    \"email\": \"user1@celine.shop\", \r\n    \"id_number\": \"123123123123\", \r\n    \"gender\": \"M\", \r\n    \"address\": \"Di Rumah\", \r\n    \"created_by\": \"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/customers",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"CUST001\", \r\n    \"username\": \"user1\", \r\n    \"fullname\": \"Muhammad Faishal Reza\", \r\n    \"phone_number\": \"08888888\", \r\n    \"email\": \"user1@celine.shop\", \r\n    \"id_number\": \"123123123123\", \r\n    \"gender\": \"M\", \r\n    \"address\": \"Di Rumah\", \r\n    \"updated_by\": \"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/customers",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"CUST001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/customers",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Read All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/employees",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/employees/EMP001",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								"EMP001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employee_id\": \"EMP001\",\r\n    \"username\": \"employee1\",\r\n    \"fullname\": \"Faishal\",\r\n    \"phone_number\": \"089122617231\",\r\n    \"address\": \"Di Rumah\",\r\n    \"created_by\": \"employee1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/employees",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employee_id\": \"EMP001\",\r\n    \"username\": \"employee1\",\r\n    \"fullname\": \"Faishal Rio\",\r\n    \"phone_number\": \"08172312312\",\r\n    \"address\": \"Di Rumah\",\r\n    \"updated_by\": \"employee1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/employees",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employee_id\": \"EMP001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/employees",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Read All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Customer Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/customers/CUST001/orders",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"customers",
+								"CUST001",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders/ORD01",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"ORD01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD02\",\r\n    \"customer_id\": \"CUST001\",\r\n    \"employee_id\": \"EMP001\",\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"07:00:00\",\r\n    \"is_down_payment\": true,\r\n    \"customer_account_name\": \"Muhammad Faishal\",\r\n    \"customer_account_number\": \"3291910211\",\r\n    \"customer_payment_nominal\": \"10000\",\r\n    \"transfer_evidence\": \"gambar\",\r\n    \"detail_order\": [{\r\n        \"service_id\": \"S001\",\r\n        \"service_name\": \"Cukur Rambut\",\r\n        \"price\": \"20000\"\r\n    }],\r\n    \"created_by\": \"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD02\",\r\n    \"customer_id\": \"CUST001\",\r\n    \"employee_id\": \"EMP001\",\r\n    \"schedule_id\": \"3\",\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"07:00:00\",\r\n    \"is_down_payment\": true,\r\n    \"customer_account_name\": \"Muhammad Faishal\",\r\n    \"customer_account_number\": \"3291910211\",\r\n    \"customer_payment_nominal\": \"10000\",\r\n    \"transfer_evidence\": \"gambar\",\r\n    \"status\": \"on-progress\",\r\n    \"detail_order\": [{\r\n        \"service_id\": \"S001\",\r\n        \"service_name\": \"Cukur Rambut\",\r\n        \"price\": \"20000\"\r\n    },{\r\n        \"service_id\": \"S002\",\r\n        \"service_name\": \"Kramas\",\r\n        \"price\": \"20000\"\r\n    }],\r\n    \"created_by\": \"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"s102\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders/confirm",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders/complete",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Detail",
+			"item": [
+				{
+					"name": "Order Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders/ORD01/details",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"ORD01",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD01\",\r\n    \"service_id\": \"S002\",\r\n    \"service_name\": \"Kramas\",\r\n    \"price\": \"20000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders/details",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": \"ORD01\",\r\n    \"service_id\": \"S002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/orders/details",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"details"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedule",
+			"item": [
+				{
+					"name": "Available Schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/schedules/available",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"schedules",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"booking_date\": \"2021-01-01\",\r\n    \"booking_time\": \"00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/schedules",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"schedules"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Order Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://enigmatic-atoll-46738.herokuapp.com/api/report?type=weekly",
+							"protocol": "https",
+							"host": [
+								"enigmatic-atoll-46738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"report"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "weekly"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
