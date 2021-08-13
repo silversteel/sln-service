@@ -131,12 +131,12 @@ async function read(req, res) {
 
 async function readAll(req, res) {
     try {
-        const { show_status } = req.params;
+        const { show_status } = req.query;
         let is_show = null;
         if (show_status === 'show_only') {
             is_show = true;
         }
-        console.log(req.params);
+
         const response = await serviceModel.findAll(is_show);
         if (response.rowCount > 0) {
             res.status(200);

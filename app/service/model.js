@@ -48,8 +48,6 @@ async function findAll(is_show) {
             query += ' where is_show = true';
         }
 
-        console.log(query);
-
         const result = await db.query(query);
         return result;
     } catch (err) {
