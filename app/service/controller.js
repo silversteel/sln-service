@@ -1,8 +1,12 @@
 const serviceModel = require('./model');
+const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
         const { service_id, service_name, thumbnail, description, price, created_by } = req.body;
+        if (!service_id) {
+            service_id = nanoid(10);
+        }
         const checkService = await serviceModel.findById(service_id);
         if (checkService.rowCount > 0) {
             res.status(400);

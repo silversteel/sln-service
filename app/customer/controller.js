@@ -1,8 +1,12 @@
 const customerModel = require('./model');
+const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
         const { customer_id, username, fullname, phone_number, email, id_number, gender, address, created_by } = req.body;
+        if (!customer_id) {
+            customer_id = nanoid(10);
+        }
         const checkCustomer = await customerModel.findById(customer_id);
         if (checkCustomer.rowCount > 0) {
             res.status(400);

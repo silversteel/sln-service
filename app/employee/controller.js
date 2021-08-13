@@ -1,8 +1,12 @@
 const employeeModel = require('./model');
+const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
         const { employee_id, username, fullname, phone_number, address, created_by } = req.body;
+        if (!employee_id) {
+            employee_id = nanoid(10);
+        }
         const checkEmployee = await employeeModel.findById(employee_id);
         if (checkEmployee.rowCount > 0) {
             res.status(400);

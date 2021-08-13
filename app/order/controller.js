@@ -1,6 +1,7 @@
 const orderModel = require('./model');
 const scheduleModel = require('../schedule/model');
 const orderDetailModel = require('../detail_order/model');
+const { nanoid } = require('nanoid');
 
 async function checkEmployeeSchedule(employee_id, schedule) {
     try {
@@ -44,6 +45,10 @@ async function create(req, res) {
             detail_order,
             created_by 
         } = req.body;
+
+        if (!order_id) {
+            order_id = nanoid(10);
+        }
 
         const checkOrder = await orderModel.findById(order_id);
         if (checkOrder.rowCount > 0) {
