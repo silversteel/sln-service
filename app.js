@@ -35,13 +35,13 @@ app.use(decodeToken());
 
 //router here
 app.use('/api', authRouter);
-app.use('/api', checkUser, serviceRouter);
-app.use('/api', checkUser, employeeRouter);
-app.use('/api', checkUser, customerRouter);
-app.use('/api', checkUser, orderRouter);
-app.use('/api', checkUser, orderDetailRouter);
-app.use('/api', checkUser, scheduleRouter);
-app.use('/api', checkUser, reportRouter);
+app.use('/api', serviceRouter);
+app.use('/api', employeeRouter);
+app.use('/api', customerRouter);
+app.use('/api', orderRouter);
+app.use('/api', orderDetailRouter);
+app.use('/api', scheduleRouter);
+app.use('/api', reportRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
