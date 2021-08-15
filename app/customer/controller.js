@@ -109,7 +109,7 @@ async function readByUsername(req, res) {
         const response = await customerModel.findByUsername(id);
         if (response.rowCount > 0) {
             res.status(200);
-            res.json(response.rows[0]);
+            res.json(response.rows);
         } else {
             res.status(404);
             res.json({
