@@ -30,6 +30,16 @@ async function remove(employee_id) {
     }
 }
 
+async function hideEmployee(employee_id, updated_by) {
+    try {
+        const result = await db.query('update celine.employee set is_show = false, updated = now(), updated_by = $2 where employee_id = $1', [employee_id, updated_by]);
+        return result;
+    } catch (err) {
+        console.log(err.stack);
+        throw err;
+    }
+}
+
 async function findAll(is_show) {
     try {
         let query = 'select * from celine.employee';
@@ -70,6 +80,7 @@ module.exports = {
     insert,
     update,
     remove,
+    hideEmployee,
     findAll,
     findById,
     findByUsername

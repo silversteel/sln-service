@@ -82,6 +82,32 @@ async function remove(req, res) {
     }
 }
 
+async function hideEmployee(req, res) {
+    try {
+        const { employee_id, updated_by } = req.body;
+        const checkEmployee = await employeeModel.findById(employee_id);
+        if (checkEmployee.rowCount > 0) {
+            const result = await employeeModel.hideEmployee(employee_id);
+            if (result.rowCount > 0) {
+                res.status(200);
+                res.json({
+                    message: "Employee successfully hide!"
+                });
+            }
+        } else {
+            res.status(404);
+            res.json({
+                message: "Employee not found!"
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
 async function read(req, res) {
     try {
         const { id } = req.params;
@@ -152,6 +178,7 @@ module.exports = {
     create,
     update,
     remove,
+    hideEmployee,
     read,
     readByUsername,
     readAll

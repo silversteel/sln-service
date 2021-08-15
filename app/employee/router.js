@@ -8,6 +8,7 @@ router.get('/employees/with-username/:id', employeeController.readByUsername);
 router.post('/employees', employeeController.create);
 router.put('/employees', employeeController.update);
 router.delete('/employees', employeeController.remove);
+router.post('/employees/hide', employeeController.hideEmployee);
 
 
 module.exports = router;
