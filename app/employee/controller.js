@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
-        let { employee_id, username, fullname, phone_number, address, created_by } = req.body;
+        let { employee_id, username, fullname, phone_number, address, is_show, created_by } = req.body;
         if (!employee_id) {
             employee_id = nanoid(10);
         }
@@ -14,7 +14,7 @@ async function create(req, res) {
                 message: 'Employee id already exists!',
             });
         } else {
-            const result = await employeeModel.insert(employee_id, username, fullname, phone_number, address, created_by);
+            const result = await employeeModel.insert(employee_id, username, fullname, phone_number, address, is_show, created_by);
             if (result.rowCount > 0) {
                 res.status(200);
                 res.json({
@@ -32,10 +32,10 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const { employee_id, username, fullname, phone_number, address, updated_by } = req.body;
+        const { employee_id, username, fullname, phone_number, address, is_show, updated_by } = req.body;
         const checkEmployee = await employeeModel.findById(employee_id);
         if (checkEmployee.rowCount > 0) {
-            const result = await employeeModel.update(employee_id, username, fullname, phone_number, address, updated_by);
+            const result = await employeeModel.update(employee_id, username, fullname, phone_number, address, is_show, updated_by);
             if (result.rowCount > 0) {
                 res.status(200);
                 res.json({
@@ -103,9 +103,36 @@ async function read(req, res) {
     }
 }
 
+async function readByUsername(req, res) {
+    try {
+        const { id } = req.params;
+        const response = await employeeModel.findByUsername(id);
+        if (response.rowCount > 0) {
+            res.status(200);
+            res.json(response.rows[0]);
+        } else {
+            res.status(404);
+            res.json({
+                message: 'Employee not found!'
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
 async function readAll(req, res) {
     try {
-        const response = await employeeModel.findAll();
+        const { show_status } = req.query;
+        let is_show = null;
+        if (show_status === 'show_only') {
+            is_show = true;
+        }
+
+        const response = await employeeModel.findAll(is_show);
         if (response.rowCount > 0) {
             res.status(200);
             res.json(response.rows);
@@ -126,5 +153,6 @@ module.exports = {
     update,
     remove,
     read,
+    readByUsername,
     readAll
 }
