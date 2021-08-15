@@ -1,8 +1,8 @@
 const db = require('../../database');
 
-async function insert(employee_id, username, fullname, phone_number, address, is_show, created_by) {
+async function insert(employee_id, username, fullname, phone_number, address, is_show, profile_image, created_by) {
     try {
-        const result = await db.query('insert into celine.employee(employee_id, username, fullname, phone_number, address, is_show, created_by) values($1, $2, $3, $4, $5, $6, $7)', [employee_id, username, fullname, phone_number, address, is_show, created_by]);
+        const result = await db.query('insert into celine.employee(employee_id, username, fullname, phone_number, address, is_show, profile_image, created_by) values($1, $2, $3, $4, $5, $6, $7, $8)', [employee_id, username, fullname, phone_number, address, is_show, profile_image, created_by]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -10,9 +10,9 @@ async function insert(employee_id, username, fullname, phone_number, address, is
     }
 }
 
-async function update(employee_id, username, fullname, phone_number, address, is_show, updated_by) {
+async function update(employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by) {
     try {
-        const result = await db.query('update celine.employee set username = $2, fullname = $3, phone_number = $4, address = $5, is_show = $6, updated_by = $7, updated = now() where employee_id = $1', [employee_id, username, fullname, phone_number, address, is_show, updated_by]);
+        const result = await db.query('update celine.employee set username = $2, fullname = $3, phone_number = $4, address = $5, is_show = $6, profile_image = $7 updated_by = $8, updated = now() where employee_id = $1', [employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by]);
         return result;
     } catch (err) {
         console.log(err.stack);

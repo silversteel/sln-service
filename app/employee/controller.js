@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid');
 
 async function create(req, res) {
     try {
-        let { employee_id, username, fullname, phone_number, address, is_show, created_by } = req.body;
+        let { employee_id, username, fullname, phone_number, address, is_show, profile_image, created_by } = req.body;
         if (!employee_id) {
             employee_id = nanoid(10);
         }
@@ -14,7 +14,7 @@ async function create(req, res) {
                 message: 'Employee id already exists!',
             });
         } else {
-            const result = await employeeModel.insert(employee_id, username, fullname, phone_number, address, is_show, created_by);
+            const result = await employeeModel.insert(employee_id, username, fullname, phone_number, address, is_show, profile_image, created_by);
             if (result.rowCount > 0) {
                 res.status(200);
                 res.json({
@@ -32,10 +32,10 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const { employee_id, username, fullname, phone_number, address, is_show, updated_by } = req.body;
+        const { employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by } = req.body;
         const checkEmployee = await employeeModel.findById(employee_id);
         if (checkEmployee.rowCount > 0) {
-            const result = await employeeModel.update(employee_id, username, fullname, phone_number, address, is_show, updated_by);
+            const result = await employeeModel.update(employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by);
             if (result.rowCount > 0) {
                 res.status(200);
                 res.json({
