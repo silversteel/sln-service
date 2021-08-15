@@ -38,11 +38,15 @@ async function create(req, res) {
             booking_date, 
             booking_time, 
             is_down_payment, 
+            celine_bank_name,
+            celine_account_name,
+            celine_account_number,
             customer_account_name, 
             customer_account_number, 
             customer_payment_nominal, 
             transfer_evidence, 
             detail_order,
+            total_payment,
             created_by 
         } = req.body;
 
@@ -66,7 +70,7 @@ async function create(req, res) {
                     orderDetailModel.insert(order_id, item.service_id, item.service_name, item.price);
                 });
                 //Add order
-                const result = await orderModel.insert(order_id, employee_id, customer_id, addSchedule.rows[0].schedule_id, booking_date + ' ' + booking_time, is_down_payment, customer_account_name, customer_account_number, customer_payment_nominal, transfer_evidence, 'unconfirmed', created_by);
+                const result = await orderModel.insert(order_id, employee_id, customer_id, addSchedule.rows[0].schedule_id, booking_date + ' ' + booking_time, is_down_payment, customer_account_name, customer_account_number, customer_payment_nominal, transfer_evidence, 'unconfirmed', celine_bank_name, celine_account_name, celine_account_number, total_payment, created_by);
                 if (result.rowCount > 0) {
                     res.status(200);
                     res.json({
@@ -98,11 +102,15 @@ async function update(req, res) {
             booking_date, 
             booking_time, 
             is_down_payment, 
+            celine_bank_name,
+            celine_account_name,
+            celine_account_number,
             customer_account_name, 
             customer_account_number, 
             customer_payment_nominal, 
             transfer_evidence, 
             detail_order,
+            total_payment,
             status,
             updated_by 
         } = req.body;
@@ -121,7 +129,7 @@ async function update(req, res) {
                     orderDetailModel.insert(order_id, item.service_id, item.service_name, item.price);
                 });
                 //Update order
-                const result = await orderModel.update(order_id, employee_id, customer_id, addSchedule.rows[0].schedule_id, booking_date + ' ' + booking_time, is_down_payment, customer_account_name, customer_account_number, customer_payment_nominal, transfer_evidence, status, updated_by);
+                const result = await orderModel.update(order_id, employee_id, customer_id, addSchedule.rows[0].schedule_id, booking_date + ' ' + booking_time, is_down_payment, customer_account_name, customer_account_number, customer_payment_nominal, transfer_evidence, status, celine_bank_name, celine_account_name, celine_account_number, total_payment, updated_by);
                 if (result.rowCount > 0) {
                     res.status(200);
                     res.json({
@@ -285,6 +293,33 @@ async function completeOrder(req, res) {
     }
 }
 
+async function cancelOrder(req, res) {
+    try {
+        const { order_id } = req.body;
+        const checkOrder = await orderModel.findById(order_id);
+        if (checkOrder.rowCount > 0) {
+            //Update order
+            const result = await orderModel.cancelOrder(order_id);
+            if (result.rowCount > 0) {
+                res.status(200);
+                res.json({
+                    message: "Order canceled!"
+                });
+            }
+        } else {
+            res.status(404);
+            res.json({
+                message: "Order not found!"
+            });
+        }
+    } catch (error) {
+        res.status(500);
+        res.json({
+            message: error.message
+        });
+    }
+}
+
 
 module.exports = {
     create,
@@ -294,5 +329,6 @@ module.exports = {
     readAll,
     readAllByCustomerId,
     completeOrder,
-    confirmOrder
+    confirmOrder,
+    cancelOrder
 }

@@ -10,5 +10,6 @@ router.put('/orders', orderController.update);
 router.delete('/orders', orderController.remove);
 router.post('/orders/confirm', orderController.confirmOrder);
 router.post('/orders/complete', orderController.completeOrder);
+router.post('/orders/cancel', orderController.completeOrder);
 
 module.exports = router;
