@@ -13,8 +13,8 @@ async function localStrategy(username, password, done){
     try {
         const user = await userModel.getUser(username, crypto.createHash('md5').update(password).digest('hex'));
         if (user.rowCount > 0) {
-            const { password, ...userWithoutPassword} =  user.rows[0];
-            return done(null, userWithoutPassword);
+            const { password, token, ...userWithoutPasswordAndToken} =  user.rows[0];
+            return done(null, userWithoutPasswordAndToken);
         }
     } catch(err) {
         return done(err, null);
