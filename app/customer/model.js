@@ -2,7 +2,7 @@ const db = require('../../database');
 
 async function insert(customer_id, username, fullname, phone_number, email, id_number, gender, address, created_by) {
     try {
-        const result = await db.query('with primary_by_username AS (select customer_id from celine_customer where is_primary = true and username = $2) insert into celine.customer(customer_id, username, fullname, phone_number, email, id_number, gender, address, is_primary, created_by) values($1, $2, $3, $4, $5, $6, $7, $8, (CASE WHEN EXISTS(select * from primary_by_username) THEN false ELSE true END), $9)', [customer_id, username, fullname, phone_number, email, id_number, gender, address, created_by]);
+        const result = await db.query('with primary_by_username AS (select customer_id from celine.customer where is_primary = true and username = $2) insert into celine.customer(customer_id, username, fullname, phone_number, email, id_number, gender, address, is_primary, created_by) values($1, $2, $3, $4, $5, $6, $7, $8, (CASE WHEN EXISTS(select * from primary_by_username) THEN false ELSE true END), $9)', [customer_id, username, fullname, phone_number, email, id_number, gender, address, created_by]);
         return result;
     } catch (err) {
         console.log(err.stack);
