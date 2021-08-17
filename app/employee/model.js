@@ -12,7 +12,7 @@ async function insert(employee_id, username, fullname, phone_number, address, is
 
 async function update(employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by) {
     try {
-        const result = await db.query('update celine.employee set username = $2, fullname = $3, phone_number = $4, address = $5, is_show = $6, profile_image = $7 updated_by = $8, updated = now() where employee_id = $1', [employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by]);
+        const result = await db.query('update celine.employee set username = $2, fullname = $3, phone_number = $4, address = $5, is_show = $6, profile_image = $7, updated_by = $8, updated = now() where employee_id = $1', [employee_id, username, fullname, phone_number, address, is_show, profile_image, updated_by]);
         return result;
     } catch (err) {
         console.log(err.stack);
