@@ -2,7 +2,7 @@ const reportModel = require('./model');
 
 async function readAll(req, res) {
     try {
-        const { type } = req.params;
+        const { type } = req.query;
         const response = await reportModel.findAll(type);
         if (response.rowCount > 0) {
             res.status(200);
