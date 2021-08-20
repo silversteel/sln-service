@@ -2,7 +2,8 @@ const reportModel = require('./model');
 
 async function readAll(req, res) {
     try {
-        const response = await reportModel.findAll();
+        const { type } = req.params;
+        const response = await reportModel.findAll(type);
         if (response.rowCount > 0) {
             res.status(200);
             res.json(response.rows);
