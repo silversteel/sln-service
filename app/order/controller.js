@@ -232,9 +232,19 @@ async function read(req, res) {
 async function readAllByCustomerId(req, res) {
     try {
         const response = await orderModel.findAllByCustomerId(req.params.id);
+        let modifiedResponse = [];
+
+        for (const order of response.rows) {
+            let orderfull = {
+                detail_order: await orderDetailModel.findAllByOrderId(s.order_id),
+                ...order
+            }
+            modifiedResponse.push(orderfull);
+        }
+
         if (response.rowCount > 0) {
             res.status(200);
-            res.json(response.rows);
+            res.json(modifiedResponse);
         } else {
             res.status(200);
             res.json([]);
@@ -250,9 +260,19 @@ async function readAllByCustomerId(req, res) {
 async function readAll(req, res) {
     try {
         const response = await orderModel.findAll();
+        let modifiedResponse = [];
+
+        for (const order of response.rows) {
+            let orderfull = {
+                detail_order: await orderDetailModel.findAllByOrderId(s.order_id),
+                ...order
+            }
+            modifiedResponse.push(orderfull);
+        }
+
         if (response.rowCount > 0) {
             res.status(200);
-            res.json(response.rows);
+            res.json(modifiedResponse);
         } else {
             res.status(200);
             res.json([]);
