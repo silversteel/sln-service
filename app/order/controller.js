@@ -235,8 +235,9 @@ async function readAllByCustomerId(req, res) {
         let modifiedResponse = [];
 
         for (const order of response.rows) {
+            const result = await orderDetailModel.findAllByOrderId(order.order_id);
             let orderfull = {
-                detail_order: await orderDetailModel.findAllByOrderId(order.order_id),
+                detail_order: result.rows,
                 ...order
             }
             modifiedResponse.push(orderfull);
@@ -263,8 +264,9 @@ async function readAll(req, res) {
         let modifiedResponse = [];
 
         for (const order of response.rows) {
+            const result = await orderDetailModel.findAllByOrderId(order.order_id);
             let orderfull = {
-                detail_order: await orderDetailModel.findAllByOrderId(order.order_id),
+                detail_order: result.rows,
                 ...order
             }
             modifiedResponse.push(orderfull);
