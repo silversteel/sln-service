@@ -22,6 +22,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "random": "^3.0.6"
   }
 }

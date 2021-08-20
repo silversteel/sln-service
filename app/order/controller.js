@@ -2,6 +2,7 @@ const orderModel = require('./model');
 const scheduleModel = require('../schedule/model');
 const orderDetailModel = require('../detail_order/model');
 const { nanoid } = require('nanoid');
+const random = require('random');
 
 async function checkEmployeeSchedule(employee_id, schedule) {
     try {
@@ -54,6 +55,18 @@ async function create(req, res) {
             order_id = nanoid(10);
         }
 
+        let threedigit = random.int((min = 100), (max = 999));
+
+        if (customer_payment_nominal) {
+            total_payment = customer_payment_nominal;
+        } else {
+            detail_order.forEach(x => {
+                total_payment += x.price;
+            });
+        }
+
+        total_payment += threedigit;
+
         const checkOrder = await orderModel.findById(order_id);
         if (checkOrder.rowCount > 0) {
             res.status(400);
@@ -94,7 +107,7 @@ async function create(req, res) {
 
 async function update(req, res) {
     try {
-        const {             
+        let {             
             order_id, 
             customer_id, 
             employee_id, 
@@ -114,6 +127,19 @@ async function update(req, res) {
             status,
             updated_by 
         } = req.body;
+
+        let threedigit = random.int((min = 100), (max = 999));
+
+        if (customer_payment_nominal) {
+            total_payment = customer_payment_nominal;
+        } else {
+            detail_order.forEach(x => {
+                total_payment += x.price;
+            });
+        }
+
+        total_payment += threedigit;
+
         const checkOrder = await orderModel.findById(order_id);
         if (checkOrder.rowCount > 0) {
             const isEmployeeHaveSchedule = await checkEmployeeScheduleWithScheduleId(employee_id, booking_date + ' ' + booking_time, schedule_id);
