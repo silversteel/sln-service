@@ -2,7 +2,7 @@ const db = require('../../database');
 
 async function findAll(type) {
     try {
-        let period = "year";
+        let period = "day";
         if (type === "daily") {
             period = "day";
         } else if (type === "weekly") {
