@@ -131,14 +131,14 @@ async function update(req, res) {
         let threedigit = random.int((min = 100), (max = 999));
 
         if (customer_payment_nominal) {
-            total_payment = customer_payment_nominal;
+            total_payment = parseInt(customer_payment_nominal);
         } else {
             detail_order.forEach(x => {
-                total_payment += x.price;
+                total_payment = parseInt(total_payment) + x.price;
             });
         }
 
-        total_payment += threedigit;
+        total_payment = parseInt(total_payment) + threedigit;
 
         const checkOrder = await orderModel.findById(order_id);
         if (checkOrder.rowCount > 0) {
