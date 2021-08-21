@@ -42,7 +42,7 @@ async function findAll() {
 
 async function findAllByCustomerId(customer_id) {
     try {
-        const result = await db.query('select o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o where o.customer_id = $1', [customer_id]);
+        const result = await db.query('select e.fullname as employee_name, o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o join celine.employee e on e.employee_id = o.employee_id join celine.customer c on c.customer_id = o.customer_id where c.username = $1', [customer_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -52,7 +52,7 @@ async function findAllByCustomerId(customer_id) {
 
 async function findById(order_id) {
     try {
-        const result = await db.query('select o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o where o.order_id = $1', [order_id]);
+        const result = await db.query('select e.fullname as employee_name, o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o join celine.employee e on e.employee_id = o.employee_id where o.order_id = $1', [order_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
