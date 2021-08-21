@@ -22,7 +22,7 @@ async function localStrategy(username, password, done){
     done();
 }
 
-function me(req, res, next) {
+async function me(req, res, next) {
     if (!req.user) {
         return res.json({
             message: "You're not logged in or token expired"
