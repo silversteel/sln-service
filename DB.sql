@@ -4,6 +4,7 @@ CREATE SCHEMA celine
 CREATE TABLE celine.user (
 	username character varying(25) NOT NULL PRIMARY KEY,
     password character varying(255) NOT NULL,
+	image text,
 	email character varying(100),
     role character varying(10) NOT NULL,
 	token text,

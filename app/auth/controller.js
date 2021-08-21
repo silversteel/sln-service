@@ -13,7 +13,7 @@ async function localStrategy(username, password, done){
     try {
         const user = await userModel.getUser(username, crypto.createHash('md5').update(password).digest('hex'));
         if (user.rowCount > 0) {
-            const { password, token, ...userWithoutPasswordAndToken} =  user.rows[0];
+            const { password, token, image, ...userWithoutPasswordAndToken} =  user.rows[0];
             return done(null, userWithoutPasswordAndToken);
         }
     } catch(err) {
@@ -28,7 +28,8 @@ function me(req, res, next) {
             message: "You're not logged in or token expired"
         });
     }
-    return res.json(req.user);
+    const user = await userModel.checkUser(req.user.username);
+    return res.json(user);
 }
 
 async function login(req, res, next) {
@@ -87,7 +88,7 @@ async function logout(req, res) {
 
 async function register(req, res) {
     try {
-        const { username, password, email, role } = req.body;
+        const { username, password, email, image, role } = req.body;
         const checkUser = await userModel.checkUser(username);
         if (checkUser.rowCount > 0) {
             res.status(400);
@@ -95,7 +96,7 @@ async function register(req, res) {
                 message: 'Username already taken!',
             });
         } else {
-            const user = await userModel.createUser(username, crypto.createHash('md5').update(password).digest('hex'), email, role);
+            const user = await userModel.createUser(username, crypto.createHash('md5').update(password).digest('hex'), email, image, role);
             if (user.rowCount > 0) {
                 res.status(200);
                 res.json({
@@ -114,8 +115,8 @@ async function register(req, res) {
 
 async function updateUser(req, res) {
     try {
-        const { username, password, email, role } = req.body;
-        const user = await userModel.updateUser(username, crypto.createHash('md5').update(password).digest('hex'), email, role);
+        const { username, password, email, image, role } = req.body;
+        const user = await userModel.updateUser(username, crypto.createHash('md5').update(password).digest('hex'), email, image, role);
         if (user.rowCount > 0) {
             res.status(200);
             res.json({
