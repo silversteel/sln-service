@@ -32,7 +32,32 @@ async function createUser(username, password, email, image, role) {
 
 async function updateUser(username, password, email, image, role) {
     try {
-        const result = await db.query('update celine.user set password = $2, email = $3, image = $4, role = $5 where username = $1', [username, password, email, image, role]);
+        let query = "update celine.user set";
+        let params =  [username];
+        if (password) {
+            query += " password = $2,";
+            params.push(password);
+        }
+        if (email) {
+            query += " email = $3,";
+            params.push(email);
+        }
+        if (image) {
+            query += " image = $4,";
+            params.push(image);
+        }
+        if (role) {
+            query += " role = $5";
+            params.push(role);
+        }
+
+        if (!password && !email && !image && !role) {
+            throw new Error('all field is empty!');
+        }
+
+        query += " where username = $1";
+
+        const result = await db.query(query, params);
         return result;
     } catch (error) {
         console.log(error.stack);
