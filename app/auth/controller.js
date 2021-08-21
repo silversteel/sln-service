@@ -29,7 +29,7 @@ async function me(req, res, next) {
         });
     }
     const user = await userModel.checkUser(req.user.username);
-    return res.json(user);
+    return res.json(user.rows[0]);
 }
 
 async function login(req, res, next) {
