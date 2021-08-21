@@ -32,7 +32,7 @@ async function remove(order_id) {
 
 async function findAll() {
     try {
-        const result = await db.query('select o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o');
+        const result = await db.query('select e.fullname as employee_name, o.*, (select sum(price) as total from celine.order_detail where order_id = o.order_id group by order_id) as total from celine.order o join celine.employee e on e.employee_id = o.employee_id');
         return result;
     } catch (err) {
         console.log(err.stack);
