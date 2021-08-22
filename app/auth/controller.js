@@ -43,12 +43,15 @@ async function login(req, res, next) {
         let signed = jwt.sign(user, tokenSecret); // <--- ganti secret key dengan keymu sendiri, bebas yang sulit ditebak
         
         await userModel.updateToken(user.username, signed);
+        const dbuser = await userModel.checkUser(user.username);
+
         return res.json({
             message: 'Successfully login!',
             data: {
-                username: user.username,
-                email: user.email,
-                role: user.role,
+                username: dbuser.rows[0].username,
+                email: dbuser.rows[0].email,
+                role: dbuser.rows[0].role,
+                image: dbuser.rows[0].image,
                 token: signed
             }
         });
