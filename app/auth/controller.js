@@ -119,7 +119,11 @@ async function register(req, res) {
 async function updateUser(req, res) {
     try {
         const { username, password, email, image, role } = req.body;
-        const user = await userModel.updateUser(username, crypto.createHash('md5').update(password).digest('hex'), email, image, role);
+        let hashedpassword = null;
+        if (password) {
+            hashedpassword = crypto.createHash('md5').update(password).digest('hex');
+        }
+        const user = await userModel.updateUser(username, hashedpassword, email, image, role);
         if (user.rowCount > 0) {
             res.status(200);
             res.json({
