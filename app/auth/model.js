@@ -35,19 +35,23 @@ async function updateUser(username, password, email, image, role) {
         let query = "update celine.user set";
         let params =  [username];
         if (password) {
-            query += " password = $2,";
+            let totalParams = parseInt(params.length) + 1;
+            query += " password = $"+totalParams+",";
             params.push(password);
         }
         if (email) {
-            query += " email = $3,";
+            let totalParams = params.length + 1;
+            query += " email = $"+totalParams+",";
             params.push(email);
         }
         if (image) {
-            query += " image = $4,";
+            let totalParams = params.length + 1;
+            query += " image = $"+totalParams+",";
             params.push(image);
         }
         if (role) {
-            query += " role = $5";
+            let totalParams = params.length + 1;
+            query += " role = $"+totalParams+"";
             params.push(role);
         }
 
