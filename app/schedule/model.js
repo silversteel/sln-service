@@ -42,7 +42,7 @@ async function findAll() {
 
 async function findAllEmployeeAvailableSchedule(schedule) {
     try {
-        const result = await db.query("select e.employee_id, e.fullname, e.phone_number, e.profile_image, s.schedule_id, s.schedule, s.status, s.created from celine.schedule s right join celine.employee e on e.employee_id = s.employee_id where (s.status = 'complete' OR ($1::timestamp < s.schedule OR s.schedule + '3 hour'::interval >= $1::timestamp)) OR (s.status is null)", [schedule]);
+        const result = await db.query("select e.* from celine.schedule s right join celine.employee e on e.employee_id = s.employee_id where (s.status = 'complete' OR ($1::timestamp < s.schedule OR s.schedule + '3 hour'::interval >= $1::timestamp)) OR (s.status is null)", [schedule]);
         return result;
     } catch (err) {
         console.log(err.stack);
