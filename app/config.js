@@ -9,5 +9,6 @@ module.exports = {
    dbPort: process.env_DB_PORT,
    dbPass: process.env.DB_PASS, 
    dbName: process.env.DB_NAME,
-   dbUrl: process.env.DATABASE_URL
+   dbUrl: process.env.DATABASE_URL,
+   timezone: process.env.TZ
 }
