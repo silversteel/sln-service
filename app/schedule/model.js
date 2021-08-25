@@ -2,7 +2,7 @@ const db = require('../../database');
 
 async function insert(employee_id, schedule, status) {
     try {
-        const result = await db.query('insert into celine.schedule(employee_id, schedule, status) values($1, $2, $3) returning *', [employee_id, schedule, status]);
+        const result = await db.query("insert into celine.schedule(employee_id, schedule, status) values($1, $2::timestamp at time zone 'Asia/Jakarta', $3) returning *", [employee_id, schedule, status]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -12,7 +12,7 @@ async function insert(employee_id, schedule, status) {
 
 async function update(schedule_id, employee_id, schedule, status) {
     try {
-        const result = await db.query('update celine.schedule set employee_id = $2, schedule = $3, status = $4 where schedule_id = $1', [schedule_id, employee_id, schedule, status]);
+        const result = await db.query("update celine.schedule set employee_id = $2, schedule = $3::timestamp at time zone 'Asia/Jakarta', status = $4 where schedule_id = $1", [schedule_id, employee_id, schedule, status]);
         return result;
     } catch (err) {
         console.log(err.stack);
