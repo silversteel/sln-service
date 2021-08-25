@@ -42,7 +42,7 @@ async function findAll() {
 
 async function findAllEmployeeAvailableSchedule(schedule) {
     try {
-        const result = await db.query("select e.* from celine.schedule s right join celine.employee e on e.employee_id = s.employee_id where (s.status = 'complete' OR ($1::timestamp < s.schedule OR s.schedule + '3 hour'::interval >= $1::timestamp)) OR (s.status is null)", [schedule]);
+        const result = await db.query("with non_available as ( select employee_id, schedule, status from celine.schedule s where ( case when s.status IN ('complete', 'canceled') then false else ( $1 :: timestamp at time zone 'Asia/Jakarta' >= s.schedule and $1 :: timestamp at time zone 'Asia/Jakarta' < s.schedule + '3 hour' :: interval ) end ) ) select distinct on (employee_id) e.* from celine.schedule s right join celine.employee e on e.employee_id = s.employee_id where e.employee_id not in ( select employee_id from non_available ) or s.schedule_id is null", [schedule]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -62,7 +62,7 @@ async function findById(schedule_id) {
 
 async function findByEmployeeId(employee_id, schedule) {
     try {
-        const result = await db.query("select * from celine.schedule where employee_id = $1 and (CASE WHEN status != 'complete' THEN (schedule >= $2::timestamp and schedule < $2::timestamp + '3 hour'::interval) or status = $3 ELSE false END)", [employee_id, schedule, 'on-progress']);
+        const result = await db.query("select * from celine.schedule s where s.employee_id = $1 and ( case when s.status IN ('complete', 'canceled') then false else ( $2 :: timestamp at time zone 'Asia/Jakarta' >= s.schedule and $2 :: timestamp at time zone 'Asia/Jakarta' < s.schedule + '3 hour' :: interval ) end )", [employee_id, schedule]);
         return result;
     } catch (err) {
         console.log(err.stack);
@@ -72,7 +72,7 @@ async function findByEmployeeId(employee_id, schedule) {
 
 async function findByEmployeeIdWithScheduleId(employee_id, schedule, schedule_id) {
     try {
-        const result = await db.query("select * from celine.schedule where employee_id = $1 and schedule_id != $4 and (CASE WHEN status != 'complete' THEN (schedule >= $2::timestamp and schedule < $2::timestamp + '3 hour'::interval) or status = $3 ELSE false END)", [employee_id, schedule, 'on-progress', schedule_id]);
+        const result = await db.query("select * from celine.schedule s where s.employee_id = $1 and s.schedule_id != $3 and ( case when s.status IN ('complete', 'canceled') then false else ( $2 :: timestamp at time zone 'Asia/Jakarta' >= s.schedule and $2 :: timestamp at time zone 'Asia/Jakarta' < s.schedule + '3 hour' :: interval ) end )", [employee_id, schedule, schedule_id]);
         return result;
     } catch (err) {
         console.log(err.stack);
